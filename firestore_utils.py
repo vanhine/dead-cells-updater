@@ -42,7 +42,7 @@ class FirestoreManager:
             powers_collection
         )
         enemies = self.get_firebase_items(
-            lambda enemy: models.Enemy(**enemy)
+            lambda enemy: models.Enemy(**enemy),
             enemies_collection
         )
         return {
