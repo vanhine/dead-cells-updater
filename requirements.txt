@@ -1,3 +1,4 @@
 beautifulsoup4==4.10.0
 firebase_admin==5.2.0
+protobuf==3.19.1
 sendgrid==6.9.3

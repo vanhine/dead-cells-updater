@@ -5,6 +5,10 @@ from dead_cells_wiki_scraper.dead_cells_provider import DeadCellsWikiProvider
 from firestore_utils import FirestoreManager
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail, Email
+from google.cloud import logging
+
+logging_client = logging.Client()
+logger = logging_client.logger("dcupdater")
 
 cred = credentials.ApplicationDefault()
 firebase_admin.initialize_app(cred, {
@@ -25,6 +29,7 @@ def check_for_updates(data):
 
     if needs_update:
         diffs_message = create_message(diffs)
+        logging.log_text('Found diffs: %s', diffs)
         send_update_email(diffs_message)
         
 
