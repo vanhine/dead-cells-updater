@@ -30,7 +30,7 @@ def check_for_updates(data):
 
     if needs_update:
         diffs_message = create_message(diffs)
-        logger.log_text('Found diffs: %s', diffs)
+        logger.log_text('Found diffs: %s' % diffs)
         send_update_email(diffs_message)
     else:
         logger.log_text('No diff found')
