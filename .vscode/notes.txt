@@ -1,0 +1,6 @@
+Function calls
+    * check_for_updates
+    * update_firestore
+
+check_for_updates()
+    
