@@ -90,10 +90,11 @@ def tr_to_power(table_row):
 def tr_to_enemy(table_row):
     columns = table_row.find_all('td')
     name = columns[1].find('a').getText()
-    zones_str = columns[2].find_all('i')
+    zone_element = columns[2].find_all('i')
     zones = []
-    for zone in zones_str:
+    for zone in zone_element:
         zones.append(zone.getText())
+    zone_str = ''.join(zones)
     offensive_abilities = columns[3].getText()
     defensive_abilities = columns[4].getText()
     elite = columns[5].getText()
@@ -105,5 +106,5 @@ def tr_to_enemy(table_row):
         image_url = img_tag.get('data-src')
     else:
         image_url = img_tag.get('src')
-    return models.Enemy(name, zones, offensive_abilities,
+    return models.Enemy(name, zone_str, offensive_abilities,
                         defensive_abilities, elite, blueprint_drops, image_url)

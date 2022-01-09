@@ -16,6 +16,7 @@ firebase_admin.initialize_app(cred, {
 })
 db = firestore.client()
 
+
 def check_for_updates(data):
     provider = DeadCellsWikiProvider()
     firestore_manager = FirestoreManager(db, provider)
@@ -33,7 +34,7 @@ def check_for_updates(data):
         send_update_email(diffs_message)
     else:
         logger.log_text('No diff found')
-        
+
 
 def create_message(diffs):
     removals = '<h3>Removals</h3>'
@@ -50,6 +51,7 @@ def create_message(diffs):
     link = "<br><p>If these changes look correct, please follow this <a href=\"https://us-central1-dead-cells-268800.cloudfunctions.net/update_firestore\">link</a>"
     return removals + additions + link
 
+
 def send_update_email(differences):
     message = Mail(
         to_emails="dead-cells-companion-admins@googlegroups.com",
@@ -63,6 +65,7 @@ def send_update_email(differences):
     sg = SendGridAPIClient()
     response = sg.send(message)
     print(response.status_code)
+
 
 def update_firestore(request):
     provider = DeadCellsWikiProvider()
