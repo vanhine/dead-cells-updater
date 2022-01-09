@@ -1,11 +1,11 @@
 import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
+from firebase_admin import credentials, firestore
+from google.cloud import logging
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Email, Mail
+
 from dead_cells_wiki_scraper.dead_cells_provider import DeadCellsWikiProvider
 from firestore_utils import FirestoreManager
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail, Email
-from google.cloud import logging
 
 logging_client = logging.Client()
 logger = logging_client.logger("dcupdater")
