@@ -171,3 +171,19 @@ class Enemy:
                     self.blueprint_drops,
                     self.image_url
                 )
+
+@dataclass(eq=True, frozen=True)
+class Boss:
+    name: str
+    description: str
+    image_url: str
+
+    def __str__(self):
+        return '''Name:<strong>{}</strong><br>
+                  Description:{}<br>
+                  Image URL:{}
+               '''.format(
+                   self.name,
+                   self.description,
+                   self.image_url
+               )
